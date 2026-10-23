@@ -81,3 +81,9 @@ jobs:
             exit 1
           fi
           "$ZIPALIGN_PATH" -c -P 16 -v 4 "$APK_FILE"
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: joplin-boost-apk
+          path: packages/app-mobile/android/app/build/outputs/apk/release/app-release.apk
+          if-no-files-found: error
